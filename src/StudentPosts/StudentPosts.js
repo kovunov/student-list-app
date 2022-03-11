@@ -14,7 +14,7 @@ export const StudentPosts = ({isAdmin}) => {
       .then((response) => response.json())
       .then((json) => setPosts(json));
     return () => {
-      "Cleanup code";
+      "Cleanup codes";
     };
   }, []);
 
