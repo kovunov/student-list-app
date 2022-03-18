@@ -12,7 +12,8 @@ export const StudentPosts = ({isAdmin}) => {
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
-      .then((json) => setPosts(json));
+      .then((json) => setPosts(json))
+      .catch((error) => console.log(error));
     return () => {
       "Cleanup codes";
     };
@@ -27,7 +28,7 @@ export const StudentPosts = ({isAdmin}) => {
       <table>
         <thead>
           <tr>
-            <th>Title</th>
+            <th>Titles</th>
             <th>Body</th>
           </tr>
         </thead>
