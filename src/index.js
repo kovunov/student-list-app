@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { App } from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+import { Provider } from 'react-redux'
+import { store } from './store'
 
 // App is the root component of our app.
 // React application is formed by a tree of React components. (github copilot)
@@ -10,9 +12,14 @@ import reportWebVitals from "./reportWebVitals";
 //We also need to install react-router-dom package
 //We created Routes component to wrap our routes
 //We created two routes, one for login form and one for student list
+
+//To connect Redux to the App component, we need to wrap App component 
+//in Provider component with store as a prop
 ReactDOM.render(
   <React.StrictMode>
-    <App/>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

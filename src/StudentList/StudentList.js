@@ -1,22 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import "./StudentList.css";
 import { AddStudentForm } from "./AddStudentForm/AddStudentForm";
+import { useSelector } from "react-redux";
 
-const studentListForReactProgramming = [
-  { name: "Bobby", age: "20", classroom: "Advanced programming" },
-  { name: "John", age: "30", classroom: "Advanced programming" },
-  { name: "Mary", age: "40", classroom: "Advanced programming" },
-];
+//useSelector is a hook that allows us to access the state of the store
+//useSelector returns a piece of the state tree
+//by useSelector we also subscribe to the updates of the stat
 export const StudentList = () => {
-  console.log("Student list rendered");
-  const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
-  const [classroom, setClassroom] = useState("");
-
-  const [studentList, setStudentList] = useState(studentListForReactProgramming);
-  const addStudent = (student) => {
-    setStudentList([...studentList, student]);
-  };
+  const studentList = useSelector((state) => state.students.list);
   return (
     <div className="student-list">
       <table>
@@ -37,15 +28,7 @@ export const StudentList = () => {
           ))}
         </tbody>
       </table>
-      <AddStudentForm
-        name={name}
-        setName={setName}
-        age={age}
-        setAge={setAge}
-        classroom={classroom}
-        setClassroom={setClassroom}
-        addStudent={addStudent}
-      />
+      <AddStudentForm/>
     </div>
   );
 };
