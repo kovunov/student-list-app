@@ -31,7 +31,7 @@ export const AddStudentForm = () => {
       ></input>
       <button
         onClick={() =>
-          dispatch(addStudent({ name: name, age: age, classroom: classroom }))
+          dispatch(addStudent({ name, age, classroom }))
         }
       >
         Add Student

@@ -13,20 +13,35 @@ const initialState = {
         { name: "Bobby", age: "20", classroom: "Advanced programming" },
         { name: "John", age: "30", classroom: "Advanced programming" },
         { name: "Mary", age: "40", classroom: "Advanced programming" },
-      ]
+      ],
+    teacher: 'Anton',
+    array: []
 }
+
 
 export const studentSlice = createSlice({
     name: "students",
-    initialState,
+    initialState: initialState,
     reducers: {
         //in this case action.payload is the student object
+        //essentially updates are done immutably behind the scenes
         addStudent: (state, action) => {
             state.list.push(action.payload)
         }
 
     }
 })
+
+//Old reducer example
+const studentReducer = (state = initialState, action) => {
+    if (action.type === "students/addStudent") {
+        return {
+            ...state,
+            list: state.list.concat(action.payload)
+        }
+    }
+    return state
+}
 // Action creators are generated for each case reducer function
 export const { addStudent } = studentSlice.actions
 
