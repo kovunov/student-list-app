@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React from "react";
 import { LoginForm } from "./LoginForm/LoginForm";
 import { StudentList } from "./StudentList/StudentList";
 import { StudentPosts } from "./StudentPosts/StudentPosts";
@@ -16,22 +16,12 @@ import { StudentPosts } from "./StudentPosts/StudentPosts";
 //we can pass data as props to a child component, prop is basically a html attribute
 //Your state should be as low in the component hierarchy as possible
 export function App() {
-  console.log("App rendered");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [isAdmin, setIsAdmin] = useState(false);
 
   return (
     <div className="App">
-      <LoginForm
-        username={username}
-        password={password}
-        setUsername={setUsername}
-        setPassword={setPassword}
-        setIsAdmin={setIsAdmin}
-      />
+      <LoginForm/>
       <StudentList/>
-      <StudentPosts isAdmin={isAdmin}/>
+      <StudentPosts/>
     </div>
   );
 }

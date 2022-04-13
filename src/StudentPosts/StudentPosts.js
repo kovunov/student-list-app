@@ -5,10 +5,11 @@ import { fetchPosts } from "../slices/postsSlice";
 //We can use React.Fragment to wrap our components without using <div>
 //React.Fragment is a component that does not render anything, it is a placeholder
 //Shorthand syntax for <React.Fragment> is <></
-export const StudentPosts = ({isAdmin}) => {
+export const StudentPosts = () => {
   const posts = useSelector(state => state.posts.list);
   const status = useSelector(state => state.posts.status);
   const error = useSelector(state => state.posts.error);
+  const token = useSelector((state) => state.login.token);
   const dispatch = useDispatch();
   // If dependency array is empty, useEffect will run only once
   //if dependency array is not empty, useEffect will run every time the values
@@ -20,8 +21,8 @@ export const StudentPosts = ({isAdmin}) => {
     }
   }, [dispatch, status]);
 
-  if (!isAdmin || error) {
-    return null;
+  if (!token || token.length === 0 || error) {
+    return <div>Please login to see student posts</div>;
   }
   return (
     <>

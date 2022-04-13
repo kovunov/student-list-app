@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
-import login from "../slices/loginSlice";
+import { loginToAccount } from "../slices/loginSlice";
 
 //React uses virtual DOM to compare the new state of the DOM tree with the old state
 //useNavigate is a hook that allows us to navigate to a new route
@@ -12,6 +12,12 @@ export const LoginForm = () => {
 
   //useState is a hook (js function) that returns an array with two elements
   // (data and a function to update the data)
+
+  const handleLogin = () => {
+    dispatch(loginToAccount({email, password}));
+    setEmail("");
+    setPassword("");
+  }
 
   const form = (
     <div className="login-form">
@@ -30,7 +36,7 @@ export const LoginForm = () => {
       <br />
       <button
         disabled={email.length === 0 || password.length === 0}
-        onClick={() => dispatch(login({email, password}))}
+        onClick={() => handleLogin()}
       >
         Login
       </button>

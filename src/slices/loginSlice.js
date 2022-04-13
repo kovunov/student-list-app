@@ -35,6 +35,7 @@ export const loginSlice = createSlice({
             state.status = 'loading'
         })
         builder.addCase(loginToAccount.fulfilled, (state, action) => {
+            // in our case payload is {token: "token"}
             state.token = action.payload.token
             state.status = 'succeeded'
         })
