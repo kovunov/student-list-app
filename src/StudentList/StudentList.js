@@ -8,6 +8,14 @@ import { useSelector } from "react-redux";
 //by useSelector we also subscribe to the updates of the stat
 export const StudentList = () => {
   const studentList = useSelector((state) => state.students.list);
+  const token = useSelector((state) => state.login.token);
+  const error = useSelector((state) => state.login.error);
+  if (error) {
+    return <div>{error}</div>;
+  }
+  if (!token || token.length === 0) {
+    return <div>Please login to see student list</div>
+  }
   return (
     <div className="student-list">
       <table>
